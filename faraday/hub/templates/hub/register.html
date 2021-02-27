@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+
+<!-- <h3 id="form-title">LOGIN</h3>
+		
+<form method="POST" action="">
+    {% csrf_token %}
+    
+    <input type="text" name="username" placeholder="Username..." class="form-control">
+
+    <input type="password" name="password" placeholder="Password..." class="form-control" >
+    
+    <input class="btn login_btn" type="submit" value="Login">
+</form> -->
+
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+
+<!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+              rel="stylesheet" 
+              integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+              crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5">
+                <div class="card-img-left d-none d-md-flex">
+                <!-- Background image for card set in CSS! -->
+                </div>
+                <div class="card-body">
+                <h5 class="card-title text-center">Welcome to the team, {{ type }}!</h5>
+                <form method="POST" action="" class="form-signin">
+                    {% csrf_token %}
+                    <div class="form-label-group">
+                    <input type="text" name="username" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
+                    <label for="inputUserame">Username</label>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="form-label-group">
+                    <input type="password" name="password1" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <label for="inputPassword">Password</label>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="password" name="password2" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                        <label for="inputConfirmPassword">Confirm password</label>
+                    </div>
+    
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                    <a class="d-block text-center mt-2 small" href="{% url 'login' %}">Login</a>
+                    <hr class="my-4">
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
