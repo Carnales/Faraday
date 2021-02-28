@@ -21,37 +21,39 @@
                 <hr>
 
                 <div class="form-label-group">
-                    <input type="text" name="name" class="form-control" required>
-                    <label>Name</label>
+                    <input type="text" name="name" id="inputName" class="form-control" required autofocus>
+                    <label for="inputName">Name</label>
                 </div>
 
                 <div class="form-label-group">
-                    <input type="text" name="description" class="form-control" required>
-                    <label>Description</label>
+                    <input type="text" name="description" id="inputDesc" class="form-control" required>
+                    <label for="inputDesc">Description</label>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Your questions... (seperated by ,)</label>
-                    <textarea name="questions" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="questions" placeholder="How high were the tides on January?, What about February?" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-
+                <hr>
                 <div class="form-label-group">
-                    <input type="text" name="cap" class="form-control" required>
-                    <label>Entry Cap</label>
+                    <input type="text" name="cap" id="ecap" class="form-control" required>
+                    <label for="ecap">Entry Cap</label>
                 </div>
 
                 <br>
 
                 <div class="form-label-group">
-                    <input type="text" name="category" class="form-control" required>
-                    <label>Category</label>
+                    <input type="text" id="cate" name="category" class="form-control" required>
+                    <label for="cate">Category</label>
                 </div>
 
-                <div class="form-label-group">
+                <hr>
+                <div>
+                    <label>Or... input a .csv reference instead!</label>
                     <input class="form-control form-control-lg" name="file" id="formFileLg" type="file" />
                 </div>
-
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit datapool</button>
+                <br>
+                <button style="justify-content: center;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit datapool</button>
                 <hr class="my-4">
                 </form>
             </div>
