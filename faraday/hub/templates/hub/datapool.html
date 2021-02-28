@@ -32,32 +32,7 @@
                         </div>
                         <!-- /.section-title -->
                     </div>
-                    <div class="col-lg-6">
-                            <div class="row">
-                                <div class="four col-md-6">
-                                    <div class="counter-box colored"> <i class="fa fa-thumbs-o-up"></i> <span class="counter">2147</span>
-                                        <p>Happy Customers</p>
-                                    </div>
-                                </div>
-                                <div class="four col-md-6">
-                                    <div class="counter-box"> <i class="fa fa-group"></i> <span class="counter">3275</span>
-                                        <p>Registered Members</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="four col-md-3">
-                                    <div class="counter-box"> <i class="fa fa-shopping-cart"></i> <span class="counter">289</span>
-                                        <p>Available Products</p>
-                                    </div>
-                                </div>
-                                <div class="four col-md-3">
-                                    <div class="counter-box"> <i class="fa fa-user"></i> <span class="counter">1563</span>
-                                        <p>Saved Trees</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -73,7 +48,7 @@
             </div>
             <div class="card-body">
             <h5 class="card-title text-center">Submit your own entry</h5>
-            <h4 class="card-title text-center">This dataset is worth {{prize}}$!</h4>
+            <h4 class="card-title text-center">This dataset is worth {{datapool.prize}}$!</h4>
             <form method="POST" action="" class="form-signin">
                 {% csrf_token %}
 

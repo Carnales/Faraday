@@ -72,7 +72,7 @@ def loginPage(request):
 			if user is not None:
 				login(request, user)
 				return redirect('hub')
-			
+
 		context = {}
 		return render(request, 'hub/login.html', context)
 
@@ -83,7 +83,7 @@ def logoutPage(request):
 
 @login_required(login_url='login')
 def account(request):
-    
+
     scientists = Scientist.objects.filter(user=request.user)
     if len(scientists) == 0:
         return redirect('hub')
@@ -91,7 +91,39 @@ def account(request):
 
     entries = DataEntry.objects.filter(scientist__user=request.user)
 
-    context = {"scientist":scientist, "entries":entries}
+    status = "Inactive"
+    if len(entries)>0:
+        status = "Active contributor"
+
+    balance = 0
+    all_months = []
+
+    for entry in entries:
+        balance+=entry.datapool.prize
+        date = str(entry.date_created.month)
+        all_months.append(date)
+
+    jan = 0
+    feb = 0
+    mar = 0
+    apr = 0
+
+    for month in all_months:
+        if month == '1':
+            jan+=1
+        elif month == '2':
+            feb+=1
+        elif month== '3':
+            mar+=1
+        else:
+            apr+=1
+
+    months = [jan, feb, mar, apr]
+    print(all_months)
+    # json_serializer = serializers.get_serializer("json")()
+    # months = json_serializer.serialize(months, ensure_ascii=False)
+
+    context = {"scientist":scientist, "entries":entries, "num":len(entries), "status":status, "balance":balance, "contribs":months}
     return render(request, 'hub/account.html', context)
 
 @login_required(login_url='login')
@@ -102,14 +134,18 @@ def datapool(request, pk):
     if request.method == 'POST':
         answers = request.POST.get('answers')
         scientist = Scientist.objects.filter(user=request.user)
-        
+
         if len(scientist) == 0:
             return redirect('hub')
-        
+
         scientist = scientist[0]
         print(scientist)
-        
         datapool = DataPool.objects.filter(name=pk)[0]
+
+        # prize = Datapool.objects.get_or_create(name=pk)
+        # account, created = Scientist.objects.get_or_create(user=request.user)
+        # account.balance+=1
+        # scientist.balance+=1
 
         new_entry = DataEntry.objects.create(scientist=scientist, datapool=datapool, answers=answers)
         # new_entry.save()
@@ -147,7 +183,7 @@ def dashboard(request):
         for entry in dataentries:
             print(entry.answers.split(','))
             new_data.append(entry.answers.split(','))
-        
+
         print(dataentries)
 
         # for entry in dataentries:
@@ -156,7 +192,7 @@ def dashboard(request):
         #         content = csv.reader(csvfile, delimiter=' ', quotechar='|')
         #         content = list(content)
         #         data.append(content[1])
-        
+
         print(new_data)
         print("====================================")
         context = {"data":new_data}
@@ -178,11 +214,11 @@ def createDataPool(request):
         employer = Employer.objects.filter(user=request.user)[0]
 
 
-        new_dp = DataPool.objects.create(name=name, 
-                                        employer=employer, 
-                                        description=description, 
-                                        category=category, 
-                                        questions=questions, 
+        new_dp = DataPool.objects.create(name=name,
+                                        employer=employer,
+                                        description=description,
+                                        category=category,
+                                        questions=questions,
                                         entry_cap=cap)
         return redirect('hub')
 
