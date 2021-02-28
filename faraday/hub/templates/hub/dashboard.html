@@ -1,0 +1,77 @@
+{% extends 'hub/main.html' %}
+{% load static %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'lib/jquery-jvectormap-2.0.5.css' %}">
+
+<script src="{% static 'lib/jquery-jvectormap-2.0.5.min.js' %}"></script>
+<script src="{% static 'lib/jquery-jvectormap-world-mill.js' %}"></script>
+{% endblock styles %}
+
+{% block content %}
+<div class="container py-3">
+    <div class="title h1 text-center">Horizontal cards - Bootstrap 4</div>
+    <!-- Card Start -->
+    <div class="card">
+      <div class="row ">
+  
+        <div class="col-md-7 px-3">
+            <div id="world-map" style="width: 600px; height: 400px"></div>
+            <script>
+                $(function(){
+                $('#world-map').vectorMap({map: 'world_mill'});
+                });
+            </script>
+        </div>
+          
+      </div>
+    </div>
+    <!-- End of card -->
+  
+</div>
+  
+  <div class="container">
+    <div class="card float-left">
+      <div class="row ">
+  
+        <div class="col-sm-7">
+          <div class="card-block">
+            <!--           <h4 class="card-title">Small card</h4> -->
+            <p>Wetgple text to build your own card.</p>
+            <p>Change around the content for awsomenes</p>
+            <a href="#" class="btn btn-primary btn-sm">Read More</a>
+          </div>
+        </div>
+  
+        <div class="col-sm-5">
+          <img class="d-block w-100" src="https://picsum.photos/150?image=380" alt="">
+        </div>
+      </div>
+    </div>
+  
+   
+      <div class="card float-right">
+        <div class="row">
+          <div class="col-sm-5">
+            <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">
+          </div>
+          <div class="col-sm-7">
+            <div class="card-block">
+              <!--           <h4 class="card-title">Small card</h4> -->
+              <p>Copy paste the HTML and CSS.</p>
+              <p>Change around the content for awsomenes</p>
+              <br>
+              <a href="#" class="btn btn-primary btn-sm float-right">Read More</a>
+            </div>
+          </div>
+   
+        </div>
+      </div>
+    </div>
+   
+   <br>
+  <br>
+   
+{% endblock content %}

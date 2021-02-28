@@ -1,4 +1,6 @@
-
+.icon {
+    color: #151414 !;
+}
 
 :root {
     --input-padding-x: 1.5rem;
@@ -7,7 +9,7 @@
   
   body {
     background: #007bff;
-    background: linear-gradient(to right,#007bff, #33AEFF);
+    background: linear-gradient(to right, #33AEFF, #007bff);
   }
   
   .card-signin {
@@ -21,13 +23,6 @@
     margin-bottom: 2rem;
     font-weight: 300;
     font-size: 1.5rem;
-  }
-  
-  .card-signin .card-img-left {
-    /* width: 0%;
-    /* Link to your background image using in the property below! */
-    /* background: scroll center  */
-    /* background-size: cover; */
   }
   
   .card-signin .card-body {

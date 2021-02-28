@@ -1,199 +1,53 @@
-
-/**
- * Panels
- */
-/*** General styles ***/
-.panel {
-  box-shadow: none;
+/* body{
+  margin-top:20px;
+  color: #1a202c;
+  text-align: left;
+  background-color: #e2e8f0;    
+} */
+.main-body {
+  padding: 15px;
 }
-.panel-heading {
-  border-bottom: 0;
-}
-.panel-title {
-  font-size: 17px;
-}
-.panel-title > small {
-  font-size: .75em;
-  color: #999999;
-}
-.panel-body *:first-child {
-  margin-top: 0;
-}
-.panel-footer {
-  border-top: 0;
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
 }
 
-.panel-default > .panel-heading {
-    color: #333333;
-    background-color: transparent;
-    border-color: rgba(0, 0, 0, 0.07);
-}
-
-/**
- * Profile
- */
-/*** Profile: Header  ***/
-.profile__avatar {
-  float: left;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 20px;
-  overflow: hidden;
-}
-@media (min-width: 768px) {
-  .profile__avatar {
-    width: 100px;
-    height: 100px;
-  }
-}
-.profile__avatar > img {
-  width: 100%;
-  height: auto;
-}
-.profile__header {
-  overflow: hidden;
-}
-.profile__header p {
-  margin: 20px 0;
-}
-/*** Profile: Table ***/
-@media (min-width: 992px) {
-  .profile__table tbody th {
-    width: 200px;
-  }
-}
-/*** Profile: Recent activity ***/
-.profile-comments__item {
+.card {
   position: relative;
-  padding: 15px 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
 }
-.profile-comments__item:last-child {
-  border-bottom: 0;
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
 }
-.profile-comments__item:hover,
-.profile-comments__item:focus {
-  background-color: #f5f5f5;
+
+.gutters-sm {
+  margin-right: -8px;
+  margin-left: -8px;
 }
-.profile-comments__item:hover .profile-comments__controls,
-.profile-comments__item:focus .profile-comments__controls {
-  visibility: visible;
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+  padding-right: 8px;
+  padding-left: 8px;
 }
-.profile-comments__controls {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 5px;
-  visibility: hidden;
+.mb-3, .my-3 {
+  margin-bottom: 1rem!important;
 }
-.profile-comments__controls > a {
-  display: inline-block;
-  padding: 2px;
-  color: #999999;
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
 }
-.profile-comments__controls > a:hover,
-.profile-comments__controls > a:focus {
-  color: #333333;
+.h-100 {
+  height: 100%!important;
 }
-.profile-comments__avatar {
-  display: block;
-  float: left;
-  margin-right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-.profile-comments__avatar > img {
-  width: 100%;
-  height: auto;
-}
-.profile-comments__body {
-  overflow: hidden;
-}
-.profile-comments__sender {
-  color: #333333;
-  font-weight: 500;
-  margin: 5px 0;
-}
-.profile-comments__sender > small {
-  margin-left: 5px;
-  font-size: 12px;
-  font-weight: 400;
-  color: #999999;
-}
-@media (max-width: 767px) {
-  .profile-comments__sender > small {
-    display: block;
-    margin: 5px 0 10px;
-  }
-}
-.profile-comments__content {
-  color: #999999;
-}
-/*** Profile: Contact ***/
-.profile__contact-btn {
-  padding: 12px 20px;
-  margin-bottom: 20px;
-}
-.profile__contact-hr {
-  position: relative;
-  border-color: rgba(0, 0, 0, 0.1);
-  margin: 40px 0;
-}
-.profile__contact-hr:before {
-  content: "OR";
-  display: block;
-  padding: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background-color: #f5f5f5;
-  color: #c6c6cc;
-}
-.profile__contact-info-item {
-  margin-bottom: 30px;
-}
-.profile__contact-info-item:before,
-.profile__contact-info-item:after {
-  content: " ";
-  display: table;
-}
-.profile__contact-info-item:after {
-  clear: both;
-}
-.profile__contact-info-item:before,
-.profile__contact-info-item:after {
-  content: " ";
-  display: table;
-}
-.profile__contact-info-item:after {
-  clear: both;
-}
-.profile__contact-info-icon {
-  float: left;
-  font-size: 18px;
-  color: #999999;
-}
-.profile__contact-info-body {
-  overflow: hidden;
-  padding-left: 20px;
-  color: #999999;
-}
-.profile__contact-info-body a {
-  color: #999999;
-}
-.profile__contact-info-body a:hover,
-.profile__contact-info-body a:focus {
-  color: #999999;
-  text-decoration: none;
-}
-.profile__contact-info-heading {
-  margin-top: 2px;
-  margin-bottom: 5px;
-  font-weight: 500;
-  color: #999999;
+.shadow-none {
+  box-shadow: none!important;
 }

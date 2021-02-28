@@ -1,13 +1,25 @@
+.page-header { background: no-repeat; position: relative; background-size: cover;  }
+.page-header { background: rgba(0, 0, 0, 0.5); z-index: 0;}
 
+.page-header {
+  background-color: black;
+  background-blend-mode: screen multiply;
+}
+
+.page-caption { padding-top: 170px; padding-bottom: 174px; }
+.page-title { font-size: 46px; line-height: 1; color: #fff; font-weight: 600; text-align: center; }
+
+.card-section { position: relative; bottom: 60px; }
+.card-block { padding: 80px; }
+.section-title { margin-bottom: 60px; }
+
+.icon {
+    color: #151414 !;
+}
 
 :root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;
-  }
-  
-  body {
-    background: #007bff;
-    background: linear-gradient(to right,#007bff, #33AEFF);
   }
   
   .card-signin {
@@ -21,13 +33,6 @@
     margin-bottom: 2rem;
     font-weight: 300;
     font-size: 1.5rem;
-  }
-  
-  .card-signin .card-img-left {
-    /* width: 0%;
-    /* Link to your background image using in the property below! */
-    /* background: scroll center  */
-    /* background-size: cover; */
   }
   
   .card-signin .card-body {
@@ -108,3 +113,4 @@
     font-size: 12px;
     color: #777;
   }
+

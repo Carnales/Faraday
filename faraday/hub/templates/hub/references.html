@@ -1,5 +1,68 @@
 {% extends 'hub/main.html' %}
 {% load static %}
-{% block content %}
 
+{% block styles %}
+
+<link rel="stylesheet" href="{% static 'css/references.css' %}">
+
+{% endblock styles %}
+
+{% block content %}
+<div class="page-header" style="z-index: -1;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-caption">
+                    <h1 class="page-title">References</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.page-header-->
+<!-- news -->
+<div class="card-section">
+    <div class="container">
+        <div class="card-block bg-white mb30">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- section-title -->
+                    <div class="section-title mb-0">
+                        <h2>All about Hike. We share our knowledge on blog</h2>
+                        <p>Our approach is very simple: we define your problem and give the best solution. </p>
+                    </div>
+                    <!-- /.section-title -->
+                </div>
+                <div class="col-lg-6">
+                        <div class="row">
+                            <div class="four col-md-6">
+                                <div class="counter-box colored"> <i class="fa fa-thumbs-o-up"></i> <span class="counter">2147</span>
+                                    <p>Happy Customers</p>
+                                </div>
+                            </div>
+                            <div class="four col-md-6">
+                                <div class="counter-box"> <i class="fa fa-group"></i> <span class="counter">3275</span>
+                                    <p>Registered Members</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="four col-md-3">
+                                <div class="counter-box"> <i class="fa fa-shopping-cart"></i> <span class="counter">289</span>
+                                    <p>Available Products</p>
+                                </div>
+                            </div>
+                            <div class="four col-md-3">
+                                <div class="counter-box"> <i class="fa fa-user"></i> <span class="counter">1563</span>
+                                    <p>Saved Trees</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
 {% endblock content %}

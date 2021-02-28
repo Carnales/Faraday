@@ -1,3 +1,11 @@
+.divider {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
 
 .card-counter{
     box-shadow: 2px 2px 10px #DADADA;
@@ -52,4 +60,37 @@
     opacity: 0.5;
     display: inline;
     font-size: 18px;
+  }
+
+/*Break*/
+
+  .title {
+   
+      margin-bottom: 50px;
+      text-transform: uppercase;
+  }
+  
+  .card-block {
+      font-size: 1em;
+      position: relative;
+      margin: 0;
+      padding: 1em;
+      border: none;
+      /* border-top: 1px solid rgba(34, 36, 38, .1); */
+      box-shadow: none;
+      color: #FFF;
+       
+  }
+  .card {
+      font-size: 1em;
+      overflow: hidden;
+      padding: 5;
+      border: none;
+      border-radius: .28571429rem;
+      /* box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5; */
+      background-color: #15B097;
+  }
+  
+  .btn {
+    margin-top: auto;
   }

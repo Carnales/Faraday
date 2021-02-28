@@ -17,10 +17,10 @@ body {
     width:0;
     height:100%;
     overflow-y:hidden;
-    background: #007BFF;
+    background: #15B097;
     opacity:0.9;
       transition:all .5s;
-      display:flex;
+      /* display:flex; */
       align-items:center;
   }
   
@@ -64,11 +64,18 @@ body {
   .sidebar-nav li a {
     display:block;
     text-decoration:none;
-    color:#ddd;
+    color:#FFF;
+    font-size: larger;
   }
   
   .sidebar-nav li:hover{
-    background:#0272bd;
+    background: #67cbb0;
+    color: black;
+    border: 1px;
+  }
+
+  .sidebar-nav li a:hover{
+    color: black;
   }
 
   .copyright {

@@ -12,6 +12,9 @@
         <meta name="description" content="Citizen Science">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
+        <!--Icon-->
+        <link rel='icon' href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
         <!--The inheritor-->
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         
@@ -40,11 +43,18 @@
 
     </head>
     <body>
+
         <div id = "wrapper">
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
+                <svg class="logo-nav" width="150" height="150" style="margin-top: 10%; margin-bottom: 10%;"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <a href="{% url 'hub' %}"><image href="{% static 'images/FARADAY_LOGO_1 (4).svg' %}" height="150" width="150"/></a>
+                </svg>
                 <li><a href="{% url 'hub' %}">Data Hub</a></li>
                 <li><a href="{% url 'account' %}">Account</a></li>
+                <li><a href="{% url 'dashboard' %}">Manage Your Data</a></li>
+                <li><a href="{% url 'createDataPool' %}">Create A Datapool</a></li>
                 <li><a href="{% url 'references' %}">References</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
                 </ul>
@@ -59,12 +69,12 @@
                     </div>
                 </div>
             </div>
-                <div id="container">  
+                <!--<div id="container">-->  
                     {% block content %}
                     
                     
                     {% endblock content %}
-                </div>
+                <!--</div>-->
                 
             </div>
         </div>
