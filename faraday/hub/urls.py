@@ -13,5 +13,5 @@ urlpatterns = [
     path('references/', views.references, name="references"),
     path('create_datapool/', views.createDataPool, name="createDataPool"),
     path('download/<str:pk>/', views.download, name="download"),
-
+    path('welcome/', views.welcome, name='welcome')
 ]

@@ -5,6 +5,22 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  
+}
+
+.divider h1 {
+  font-size: 50px;
+  font-family: "Abraham";
+}
+
+.divider h2 {
+  font-size: xx-large;
+  font-family: "Roboto-Slab";
+}
+
+.divider p {
+  font-size: large;
+  font-family: "Roboto-Slab";
 }
 
 .card-counter{
@@ -23,17 +39,17 @@
   }
 
   .card-counter.primary{
-    background-color: #007bff;
+    background-color: #26c6da;
     color: #FFF;
   }
 
   .card-counter.danger{
-    background-color: #ef5350;
+    background-color: #26c6da;
     color: #FFF;
   }  
 
   .card-counter.success{
-    background-color: #66bb6a;
+    background-color: #26c6da;
     color: #FFF;
   }  
 
@@ -93,4 +109,23 @@
   
   .btn {
     margin-top: auto;
+  }
+
+  .faraday {
+    border: 2px;
+    border: white;
+    border-radius: 5px;
+
+  }
+
+  .faraday-desc h1{
+    color: white;
+    font-size: 50px;
+    font-family: "Abraham";
+  }
+
+  .faraday-desc p {
+    font-size: large;
+    font-family: "Roboto-Slab";
+    color: white;
   }

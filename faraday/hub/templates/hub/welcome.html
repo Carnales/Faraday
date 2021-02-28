@@ -1,1 +1,81 @@
-HIIII HAHAHAHAHA WELCUM TO DAYTA
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" 
+            crossorigin="anonymous">
+    </script>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+          crossorigin="anonymous">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="weather-card one">
+            <div class="top">
+              <div class="wrapper">
+                <div class="mynav">
+                  <a href="javascript:;"><span class="lnr lnr-chevron-left"></span></a>
+                  <a href="javascript:;"><span class="lnr lnr-cog"></span></a>
+                </div>
+                <h1 class="heading">Scientist</h1>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="wrapper">
+                <ul class="forecast">
+                  <a href="javascript:;"><span class="lnr lnr-chevron-up go-up"></span></a>
+                  <li class="active">
+                    <span class="date">Step up into the world of science</span>
+                    <span class="lnr lnr-sun condition">
+                    </span>
+                  </li>
+                  <li>
+                      <a href="{% url 'registerUserPage' %}" class="btn btn-primary text-white">Join</a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="weather-card rain">
+            <div class="top">
+              <div class="wrapper">
+                <div class="mynav">
+                  <a href="javascript:;"><span class="lnr lnr-chevron-left"></span></a>
+                  <a href="javascript:;"><span class="lnr lnr-cog"></span></a>
+                </div>
+                <h1 class="heading">Employer</h1>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="wrapper">
+                <ul class="forecast">
+                  <a href="javascript:;"><span class="lnr lnr-chevron-up go-up"></span></a>
+                  <li class="active">
+                    <span class="date">Spearhead tomorrow's technolgy with today's data</span>
+                  </li>
+                  <li>
+
+                      <a href="{% url 'registerEmployerPage' %}" class="btn btn-primary text-white">Join</a>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

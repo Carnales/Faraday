@@ -27,9 +27,10 @@
             <div class="col-md-6">
             <div class="card-block">
                   <!--           <h4 class="card-title">Small card</h4> -->
-                  <h1>About Us.</h1>
+                  <h1>About Us</h1>
                   <h2>Science is for everyone!</h2>
-                  <p>We believe science is essential to our future and the first step is breaking down these barriers to entry. </p>
+                  <br>
+                  <p>From medicine to social media, the world is powered data; we believe science is essential to our future and the first step is breaking down these barriers to entry for the whole world to access. Join us on the first and only DataHub sharing program of the world, the first glimpse into a connected future. </p>
             </div>
             </div>
               <div class="col-md-6">
@@ -93,7 +94,23 @@
         </svg>
     </div>
     
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="faraday" src="{% static 'images/michael-faraday.jpg' %}" alt="" height="400px" width="322px">
+            </div>
+            <div class="col-md-8 faraday-desc">
+                <h1>About Faraday</h1>
+                <p>Michael Faraday was born in 1791 to a poor family in the south of London. He received basic education, however, at the age of 13 
+                    he left schooling to help his family's economic struggles. Faraday started his career through book binding, but his love for science
+                    helped him climb to important scientific positions. However, his climb to success was not appreaciated by all. Nonetheless, his ability 
+                    to raise above all bariers and enter the world of science is testament to the power of determination, and his contributions speak to the 
+                    value of an open community. In history, Faraday is viewed as an exception; it is time to make his story one which all young scientists of 
+                    the world can asprire to be. In his honor, this website invites everyone regardless of their background to be the Faraday of tomorrow.
+                </p>
+            </div>
+        <div>
+    </div>
 
     <script src="{% static 'lib/arbor.js' %}"></script>
     <script src="{% static 'lib/arbor-tween.js' %}"></script>
@@ -159,14 +176,18 @@
                 sys.eachNode(function(node, pt){
                 var w = Math.max(150, 50+gfx.textWidth(node.name) )
                 if (node.data.alpha===0) return
-                if (node.data.shape=='dot'){
-                    gfx.oval(pt.x-w/2, pt.y-w/2, w, w, {fill:node.data.color, alpha:node.data.alpha})
-                    gfx.text(node.name, pt.x, pt.y+7, {color: node.data.tcolor, align:"center", font:"Arial", size:16})
-                    gfx.text(node.name, pt.x, pt.y+7, {color: node.data.tcolor, align:"center", font:"Arial", size:16})
+                if (node.data.shape=='dot' && node.data.main == true){
+                    gfx.oval(pt.x-w/2, pt.y-w/2, w+gfx.textWidth(node.name), w+gfx.textWidth(node.name), {fill:node.data.color, alpha:node.data.alpha})
+                    gfx.text(node.name, pt.x+gfx.textWidth(node.name)/2+4, pt.y+32+gfx.textWidth(node.name)/2, {color: node.data.tcolor, align:"center", font:"Abraham", size:52})
+                    gfx.text(node.name, pt.x+gfx.textWidth(node.name)/2+4, pt.y+32+gfx.textWidth(node.name)/2, {color: node.data.tcolor, align:"center", font:"Abraham", size:52})
+                }else if (node.data.shape=='dot'){
+                    gfx.oval(pt.x-w/2, pt.y-w/2, w+gfx.textWidth(node.name)/2, w+gfx.textWidth(node.name)/2, {fill:node.data.color, alpha:node.data.alpha})
+                    gfx.text(node.name, pt.x+gfx.textWidth(node.name)/4, pt.y+7+gfx.textWidth(node.name)/2, {color: node.data.tcolor, align:"center", font:"Roboto-Slab", size:32})
+                    gfx.text(node.name, pt.x+gfx.textWidth(node.name)/4, pt.y+7+gfx.textWidth(node.name)/2, {color: node.data.tcolor, align:"center", font:"Roboto-Slab", size:32})
                 }else{
-                    gfx.rect(pt.x-w/2, pt.y-8, w, 25, 4, {fill:node.data.color, alpha:node.data.alpha})
-                    gfx.text(node.name, pt.x, pt.y+9, {color: node.data.tcolor, align:"center", font:"Arial", size:16})
-                    gfx.text(node.name, pt.x, pt.y+9, {color: node.data.tcolor, align:"center", font:"Arial", size:16})
+                    gfx.rect(pt.x-w/2, pt.y-8, w+gfx.textWidth(node.name), 50, 4, {fill:node.data.color, alpha:node.data.alpha})
+                    gfx.text(node.name, pt.x+gfx.textWidth(node.name)/2, pt.y+36, {color: node.data.tcolor, align:"center", font:"Roboto-Slab", size:32})
+                    gfx.text(node.name, pt.x+gfx.textWidth(node.name)/2, pt.y+36, {color: node.data.tcolor, align:"center", font:"Roboto-Slab", size:32})
                 }
                 })
             },
@@ -483,7 +504,7 @@
 
             
 
-            sys.addNode("Faraday", {color:"#007bff", shape:"dot", alpha:1, tcolor: "white"})
+            sys.addNode("Faraday", {color:"#007bff", shape:"dot", alpha:1, tcolor: "white", main: true})
             console.log(sciences[2][0])
             console.log(sciences)
             sciences.forEach(sci => {

@@ -8,22 +8,53 @@
 
 <script src="{% static 'lib/jquery-jvectormap-2.0.5.min.js' %}"></script>
 <script src="{% static 'lib/jquery-jvectormap-world-mill.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 {% endblock styles %}
 
 {% block content %}
 <div class="container py-3">
-    <div class="title h1 text-center">Horizontal cards - Bootstrap 4</div>
+  <br>
+    <div style="color: white; font-family: 'Abraham';" class="display-1 title h1 text-center">{{name}}'s Dashboard</div>
     <!-- Card Start -->
     <div class="card">
       <div class="row ">
   
-        <div class="col-md-7 px-3">
-            <div id="world-map" style="width: 600px; height: 400px"></div>
+        <div class="col-md-8">
+            <div id="world-map" style="width: 100%; height: 100%">
             <script>
                 $(function(){
-                $('#world-map').vectorMap({map: 'world_mill'});
-                });
+
+                  var gdpData = {
+                    "US": {{US}},
+                    "PL": {{PL}},
+                    "MX": {{MX}},
+                    "RU": {{RU}},
+                    "BR": {{BR}}
+                  }
+
+                  $('#world-map').vectorMap({
+                      map: 'world_mill',
+                      series: {
+                        regions: [{
+                          values: gdpData,
+                          scale: ['#C8EEFF', '#0071A4'],
+                          normalizeFunction: 'polynomial'
+                        }]
+                      },
+                      onRegionTipShow: function(e, el, code){
+                        el.html(el.html()+' (GDP - '+gdpData[code]+')');
+                      }
+                    });
+              });
             </script>
+            </div>
+        </div>
+        <div class="col-md-4">
+          <h1 style="font-family: 'Roboto-Slab';">{{USP}}% are from US</h1>
+          <h1 style="font-family: 'Roboto-Slab';">{{PLP}}% are from Poland</h1>
+          <h1 style="font-family: 'Roboto-Slab';">{{MXP}}% are from Mexico</h1>
+          <h1 style="font-family: 'Roboto-Slab';">{{RUP}}% are from Russia</h1>
+          <h1 style="font-family: 'Roboto-Slab';">{{BRP}}% are from Brazil</h1>
         </div>
           
       </div>
@@ -31,22 +62,89 @@
     <!-- End of card -->
   
 </div>
-  
   <div class="container">
     <div class="card float-left">
       <div class="row ">
   
-        <div class="col-sm-7">
+        <div class="col-md-4">
           <div class="card-block">
-            <!--           <h4 class="card-title">Small card</h4> -->
-            <p>Wetgple text to build your own card.</p>
-            <p>Change around the content for awsomenes</p>
-            <a href="#" class="btn btn-primary btn-sm">Read More</a>
+            <h1 style="text-align: center; font-family: 'Roboto-Slab';">Percentage of entries</h1>
+            <canvas id="percentage"height="605"></canvas>
+            <script>
+              var ctx1 = document.getElementById('percentage').getContext('2d');
+              var myBarChart = new Chart(ctx1, {
+                  type: 'bar',
+                  legend: {
+                    display: false
+                  },
+                  data: {
+                    labels: ["Datapool"],
+                    datasets: [
+                      {
+                        label: 'Percentage of Entries Complete',
+                        backgroundColor: '#15B097',
+                        borderColor: '#15B097',
+                        data: [{{entries}}]
+                      }
+                    ]
+                  },
+                  options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                              fontColor: "black",
+                              max: {{cap}},
+                              min: 0,
+                              stepSize: 10
+                            }
+                        }],
+                        xAxes: [{
+                          ticks: {
+                            fontColor:"black"
+                          }
+                        }]
+                    }
+                }
+              });
+            </script>
           </div>
         </div>
-  
-        <div class="col-sm-5">
-          <img class="d-block w-100" src="https://picsum.photos/150?image=380" alt="">
+
+        <div class="col-md-8">
+          <canvas id="myChart" width="400" height="400"></canvas>
+          <script>
+
+          var ctx = document.getElementById('myChart').getContext('2d');
+          var myChart = new Chart(ctx, {
+              type: 'radar',
+              data: {
+                  labels: ['6 AM', '8 AM', '10 AM', '12 AM', '2 PM', '4 PM'],
+                  datasets: [{
+                      label: 'Average heigh of tides',
+                      data: [12, 19, 23, 35, 12, 8],
+                      backgroundColor: 'rgb(54, 162, 235)',
+                      borderColor: [
+                          'rgba(255, 99, 132, 1)',
+                          'rgba(54, 162, 235, 1)',
+                          'rgba(255, 206, 86, 1)',
+                          'rgba(75, 192, 192, 1)',
+                          'rgba(153, 102, 255, 1)',
+                          'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1
+                  }]
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero: true
+                          }
+                      }]
+                  }
+              }
+          });
+          </script>
         </div>
       </div>
     </div>
@@ -54,16 +152,16 @@
    
       <div class="card float-right">
         <div class="row">
-          <div class="col-sm-5">
-            <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="">
+          <div class="col-md-8">
+            
+
+            <!--Graph goes here-->
+
           </div>
-          <div class="col-sm-7">
+          <div class="col-md-4">
             <div class="card-block">
-              <!--           <h4 class="card-title">Small card</h4> -->
-              <p>Copy paste the HTML and CSS.</p>
-              <p>Change around the content for awsomenes</p>
+              <p>Manage your datapool here.</p>
               <br>
-              <a href="#" class="btn btn-primary btn-sm float-right">Read More</a>
             </div>
           </div>
    

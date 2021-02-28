@@ -7,7 +7,7 @@
 
 {% block content %}
 
-    <div class="page-header after" style="z-index: -1; background: url({% static 'images/background.jpg' %});">
+    <div class="page-header overlay-effect" style="z-index: -1; background: url({% static 'images/background.jpg' %});">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -24,55 +24,68 @@
         <div class="container">
             <div class="card-block bg-white mb30">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" style="margin-left: 25%;text-align: center">
                         <!-- section-title -->
-                        <div class="section-title mb-0">
+                        <div class="section-title mb-0 ">
                             <h2>Expanding the knowledge of {{datapool.category}}</h2>
-                            <p>{{datapool.description}}</p>
+                            <p style="text-align: center;"><strong>{{datapool.description}}</strong></p>
                         </div>
                         <!-- /.section-title -->
                     </div>
+                    <div class="container">
+                        <div class="row">
+                        <div class="col-lg-10 col-xl-9 mx-auto">
+                        <div class="card card-signin flex-row my-5">
+                            <div class="card-img-left d-none d-md-flex">
+                            <!-- Background image for card set in CSS! -->
+                            </div>
+                            <div class="card-body">
+                            <h1 class=" text-center">Submit your own entry!</h1>
+                            <h4 class="card-title text-center">This dataset is worth <strong>{{datapool.prize}}$</strong></h4>
+                            <form method="POST" action="" class="form-signin">
+                                {% csrf_token %}
+                
+                                <hr>
+                
+                                <div class="form-label-group">
+                                <!-- <button style="margin-left: 42%;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit entry</button> -->
+                                <a href="/download/{{ name }}/"><input type="button" style="font-size: 15px; padding-bottom: 8px;" class="btn btn-primary" value="Download the references sheet!" /></a>
+                                </div>
+                                <label>Alternatively, the questions are...</label>
+                                <p><strong>{{datapool.questions}}</strong></p>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Your data... (seperated by ,)</label>
+                                    <textarea name="answers" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                                
+                                <br>
 
+                                <label>Country Code</label>
+                                <div class="form-label-group">
+                                    <input type="text" style="font-size: 15px;" name="country" class="form-control" required>
+                                </div>
+
+                                <hr>
+                                <label>Alternatively, upload a .csv data sheet</label>
+                                <br>
+                                <div class="">
+                                    <input class="form-control form-control-lg" name="file" id="formFileLg" type="file" />
+                                </div>
+                                <br>
+                                <button style="margin-left: 42%;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit entry</button>
+                                <hr class="my-4">
+                                </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                     </div>
                 </div>
             </div>
+            
             </div>
             </div>
+            
             </div>
-    <div class="container">
-        <div class="row">
-        <div class="col-lg-10 col-xl-9 mx-auto">
-        <div class="card card-signin flex-row my-5">
-            <div class="card-img-left d-none d-md-flex">
-            <!-- Background image for card set in CSS! -->
-            </div>
-            <div class="card-body">
-            <h5 class="card-title text-center">Submit your own entry</h5>
-            <h4 class="card-title text-center">This dataset is worth {{datapool.prize}}$!</h4>
-            <form method="POST" action="" class="form-signin">
-                {% csrf_token %}
-
-                <hr>
-
-                <div class="form-label-group">
-                <a href="/download/{{ name }}/"><input type="button" value="Download!" /></a>
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Your data... (seperated by ,)</label>
-                    <textarea name="answers" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-
-                <div class="form-label-group">
-                    <input class="form-control form-control-lg" name="file" id="formFileLg" type="file" />
-                </div>
-
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit entry</button>
-                <hr class="my-4">
-                </form>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
 {% endblock content %}

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Abraham";
+  src: url("/static/fonts/abraham.otf") format("opentype");
+  }
+
+@font-face {
+  font-family: "Roboto-Slab";
+  src: url("/static/fonts/robotoslab.otf") format("opentype");
+  }
+
 body {
     background-color: #151414 !important;
 }
@@ -13,6 +23,8 @@ body {
 /* Sidebar */
 #sidebar-wrapper{
     z-index:1;
+    font-family: "Abraham" !important;
+    font-size: x-large;
     position: absolute;
     width:0;
     height:100%;

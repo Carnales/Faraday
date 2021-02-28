@@ -1,0 +1,36 @@
+{% extends 'hub/main.html' %}
+
+{% load static %}
+
+{% block styles %}
+{% endblock styles %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="display-1 text-center" style=" color: white; font-family: 'Abraham' ;">Thank you.</h1>
+
+    <br>
+
+    <svg class="logo-nav" width="250" height="250" style="
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25%;
+      "
+                    xmlns="http://www.w3.org/2000/svg">
+                    <a style="text-align: center;" href="{% url 'hub' %}"><image style="margin-left: 30%;" href="{% static 'images/pina_colada_bro.svg' %}" height="250" width="250"/></a>
+    </svg>
+
+    <hr>
+
+    <a href="/  "><input type="button" style="font-size: 35px; padding-bottom: 8px; color: white; margin-left: 45%; font-family: 'Roboto-Slab';" class="btn btn-primary text-center" value="Return" /></a>
+
+{% endblock content %}

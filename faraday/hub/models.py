@@ -48,6 +48,8 @@ class DataEntry(models.Model):
     datapool = models.ForeignKey(DataPool, on_delete=models.SET_NULL, blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
+    country = models.CharField(max_length=2, default='US')
+
     answers = models.TextField(default="Answer the questions here!", max_length=300, blank=True, null=True)
 
     accepted = models.BooleanField(default=False, null=True, blank=False)

@@ -19,32 +19,34 @@
                 {% csrf_token %}
 
                 <hr>
-
+                <label>Name</label>
                 <div class="form-label-group">
-                    <input type="text" name="name" id="inputName" class="form-control" required autofocus>
-                    <label for="inputName">Name</label>
+                    
+                    <input type="text" name="name" id="inputName" style="font-size: 15px;" placeholder="Name" class="form-control" required autofocus>
                 </div>
 
+                <label>Description</label>
                 <div class="form-label-group">
-                    <input type="text" name="description" id="inputDesc" class="form-control" required>
-                    <label for="inputDesc">Description</label>
+                    <input type="text" name="description" style="font-size: 15px;" id="inputDesc" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Your questions... (seperated by ,)</label>
-                    <textarea name="questions" placeholder="How high were the tides on January?, What about February?" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="questions" style="font-size: 15px;" placeholder="How high were the tides on January?, What about February?" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
                 <hr>
+                <label for="ecap">Entry Cap</label>
                 <div class="form-label-group">
-                    <input type="text" name="cap" id="ecap" class="form-control" required>
-                    <label for="ecap">Entry Cap</label>
+                    <input type="text" style="font-size: 15px;" name="cap" id="ecap" class="form-control" required>
+                    
                 </div>
 
                 <br>
-
+                <label for="cate">Category</label>
                 <div class="form-label-group">
-                    <input type="text" id="cate" name="category" class="form-control" required>
-                    <label for="cate">Category</label>
+                
+                    <input type="text" id="cate" style="font-size: 15px;" name="category" class="form-control" required>
+                    
                 </div>
 
                 <hr>
@@ -53,7 +55,7 @@
                     <input class="form-control form-control-lg" name="file" id="formFileLg" type="file" />
                 </div>
                 <br>
-                <button style="justify-content: center;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit datapool</button>
+                <button style="margin-left: 42%;" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit datapool</button>
                 <hr class="my-4">
                 </form>
             </div>
@@ -61,4 +63,8 @@
         </div>
     </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
 {% endblock content %}

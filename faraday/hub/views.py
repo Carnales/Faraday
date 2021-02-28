@@ -17,8 +17,13 @@ from django.http import HttpResponse, Http404
 
 from django.templatetags.static import static
 # VIEWS
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def hub(request):
+
+    employers = Employer.objects.filter(user=request.user)
+    if len(employers) > 0:
+        return redirect('dashboard')
+
     json_serializer = serializers.get_serializer("json")()
     dp = json_serializer.serialize(DataPool.objects.all(), ensure_ascii=False)
 
@@ -76,12 +81,12 @@ def loginPage(request):
 		context = {}
 		return render(request, 'hub/login.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def logoutPage(request):
     logout(request)
     return redirect('hub')
 
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def account(request):
 
     scientists = Scientist.objects.filter(user=request.user)
@@ -126,13 +131,14 @@ def account(request):
     context = {"scientist":scientist, "entries":entries, "num":len(entries), "status":status, "balance":balance, "contribs":months}
     return render(request, 'hub/account.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def datapool(request, pk):
     pk = pk.replace('_', ' ')
     datapool = DataPool.objects.filter(name=pk)[0]
 
     if request.method == 'POST':
         answers = request.POST.get('answers')
+        country = request.POST.get('country')
         scientist = Scientist.objects.filter(user=request.user)
 
         if len(scientist) == 0:
@@ -147,16 +153,16 @@ def datapool(request, pk):
         # account.balance+=1
         # scientist.balance+=1
 
-        new_entry = DataEntry.objects.create(scientist=scientist, datapool=datapool, answers=answers)
+        new_entry = DataEntry.objects.create(scientist=scientist, datapool=datapool, answers=answers, country=country)
         # new_entry.save()
         print(new_entry)
-        return redirect('hub')
+        return render(request, 'hub/thankyou.html')
 
     context = {"name":pk, "datapool":datapool}
     print(datapool.prize)
     return render(request, 'hub/datapool.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def dashboard(request):
 
     employer = Employer.objects.filter(user__username=request.user.username)
@@ -179,10 +185,27 @@ def dashboard(request):
         dataentries = DataEntry.objects.filter(datapool=dp)
 
         new_data = []
+        
+        US = 0
+        PL = 0
+        MX = 0
+        RU = 0
+        BR = 0
 
         for entry in dataentries:
             print(entry.answers.split(','))
             new_data.append(entry.answers.split(','))
+
+            if entry.country == "US":
+                US+=1
+            elif entry.country == "PL":
+                PL+=1
+            elif entry.country == "MX":
+                MX+=1
+            elif entry.country == "RU":
+                RU+=1
+            else:
+                BR+=1
 
         print(dataentries)
 
@@ -192,16 +215,34 @@ def dashboard(request):
         #         content = csv.reader(csvfile, delimiter=' ', quotechar='|')
         #         content = list(content)
         #         data.append(content[1])
-
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print(new_data)
-        print("====================================")
-        context = {"data":new_data}
+
+        questions = dp.questions
+        numQ = len(questions) # num to iterate through
+
+        # answers = 
+        num = len(new_data)
+        # print("====================================")
+        
+        context = {}
+
+        if num == 0:
+            context = {"data":new_data, "US":US, "PL":PL,"MX":MX,"RU":RU,"BR":BR,
+                    "USP":0, "PLP":0,"MXP":0,"RUP":0,"BRP":0,
+                     "numQ":numQ, "entries":num, "cap":dp.entry_cap, "name":dp.name}
+        else:
+            context = {"data":new_data, "US":US, "PL":PL,"MX":MX,"RU":RU,"BR":BR,
+                    "USP":(int)(US*100/num), "PLP":(int)(PL*100/num),"MXP":(int)(MX*100/num),"RUP":(int)(RU*100/num),"BRP":(int)(BR*100/num),
+                     "numQ":numQ, "entries":num, "cap":dp.entry_cap, "name":dp.name}
+        # print("========================================"+str(US))
         return render(request, 'hub/dashboard.html', context)
 
 
     context = {}
     return render(request, 'hub/dashboard.html', context)
 
+@login_required(login_url='welcome')
 def createDataPool(request):
 
     if request.method == 'POST':
@@ -220,19 +261,22 @@ def createDataPool(request):
                                         category=category,
                                         questions=questions,
                                         entry_cap=cap)
-        return redirect('hub')
+        return render(request, 'hub/thankyou.html')
 
     context = {}
     return render(request, 'hub/create_datapool.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def references(request):
     context = {}
     return render(request, 'hub/references.html', context)
 
-@login_required(login_url='login')
+@login_required(login_url='welcome')
 def download(request, pk):
     obj = DataPool.objects.get(name=pk)
     filename = 'static/images/references' + obj.docURL
     response = FileResponse(open(filename, 'rb'))
     return response
+
+def welcome(request):
+    return render(request, 'hub/welcome.html')
